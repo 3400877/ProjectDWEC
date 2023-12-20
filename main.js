@@ -23,11 +23,11 @@ const monthText = [
 const ACTUAL = "actual framed day inverse";
 const DAY = "framed day";
 
-makeVisible = (element) => element.style.display = element.style.display == 'none'
+const makeVisible = (element) => element.style.display = element.style.display == 'none'
 	? 'flex'
 	: 'none';
 
-validateMovie = (title, director, date, cast) => title.length > 0 && director.length > 0 && (date ?? undefined) && cast.some(actor => actor.length > 0);
+const validateMovie = (title, director, date, cast) => title.length > 0 && director.length > 0 && (date ?? undefined) && cast.some(actor => actor.length > 0);
 
 const moviesJsonString = `
 {
@@ -437,6 +437,7 @@ class MovieList {
 
 const actualDate = new Date();
 
+// This doesn't work because of browser defaults 
 // addMoviesFromJSONFile = (movieListObject) => {
 // 	fetch("./movies.json")
 // 		.then(response => response.json())
