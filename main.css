@@ -30,9 +30,9 @@ button {
     --border: 2px solid var(--border-color-dark);
     --border-light: 2px solid var(--border-color-light);
     --bg: hsl(0, 0%, 10%);
-    --primary: hsl(241, 45%, 33%);
-    --secondary: hsl(241, 51%, 30%);
-    --secondary-transparent: hsla(241, 32%, 13%, 0.67);
+    --primary: hsl(190, 61%, 45%);
+    --secondary: hsl(190, 51%, 30%);
+    --secondary-transparent: hsla(190, 32%, 13%, 0.67);
     --fg: white;
     --fg-inverse: rgb(0, 0, 0);
     --watched: hsl(150, 59%, 17%);
@@ -56,12 +56,12 @@ time#actual-day {
 }
 
 #calendar {
-    --primary: hsl(12, 58%, 55%);
-    --secondary: hsl(241, 66%, 55%);
+    --primary: hsl(32, 71%, 56%);
+    --secondary: hsl(212, 76%, 50%);
 }
 
 body {
-    background-image: url(assets/tile.webp);
+    background-image: url(assets/tile.webp), linear-gradient(rgba(0, 0, 0, 0.719), rgba(255, 255, 255, 0));
     background-repeat: repeat;
     min-height: 100vh;
     color: var(--fg);
@@ -188,7 +188,6 @@ article#calendar {
 }
 
 .popup {
-    display: none;
     position: fixed;
     top: 50%;
     left: 50%;
@@ -243,4 +242,13 @@ article {
 
 .hovered {
     filter: brightness(150%);
+}
+
+.hidden {
+    display: none;
+}
+
+.img {
+    height: 643px;
+    width: auto;
 }
