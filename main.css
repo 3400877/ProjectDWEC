@@ -264,6 +264,10 @@ article {
 .grid-cell {
     background-color: var(--secondary);
     border: 2px solid var(--border-color-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: hsla(0, 0%, 100%, 33%);
 }
 
 .start-cell {
@@ -275,5 +279,12 @@ article {
 }
 
 .blocked {
-    filter: brightness(-50%);
+    filter: brightness(0.3);
+}
+
+#character {
+    position: absolute;
+    font-size: 50px;
+    font-weight: bold;
+    color: white;
 }

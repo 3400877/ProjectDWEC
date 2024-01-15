@@ -1,4 +1,5 @@
 const labyrinth = document.getElementById("labyrinth-grid");
+const character = document.getElementById("character");
 
 /*const populateGrid = () => {
     
@@ -23,4 +24,18 @@ const labyrinth = document.getElementById("labyrinth-grid");
 
 }*/
 
-populateGrid();
+//populateGrid();
+
+/*const addCharacter = () => {
+    const character = document.createElement("div");
+    character.classList.add("character");
+    character.textContent = 'P';
+    labyrinth.getElementsByClassName
+}
+
+addCharacter()
+*/
+
+labyrinth.addEventListener("keydown", () => {
+    
+})
