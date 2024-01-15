@@ -1,4 +1,6 @@
 const labyrinth = document.getElementById("labyrinth-grid");
+const startCell = document.getElementById("start-cell");
+const endCell = document.getElementById("end-cell");
 const character = document.getElementById("character");
 
 /*const populateGrid = () => {
@@ -36,6 +38,48 @@ const character = document.getElementById("character");
 addCharacter()
 */
 
-labyrinth.addEventListener("keydown", () => {
-    
-})
+const getCell = (x, y) => labyrinth.getElementsByClassName("grid-cell").item(y*4 + x);
+const getCoordinates = (cell) => {
+    const index = Array.from(labyrinth.getElementsByClassName("grid-cell")).findIndex( (element) => element == cell);
+    y = index / 4;
+    x = index % 4;
+    return {x, y};
+}
+
+const cCords = getCoordinates(startCell);
+const nCords = structuredClone(cCords);
+
+const events = ['ArrowLeft', 'ArrowUp', 'ArrowRight', 'ArrowDown'];
+
+const moveCharacter = (key) => {
+    switch (key) {
+        case 'ArrowLeft':
+            if (nCords.x - 1 >= 0) {
+                nCords.x -= 1;
+            }
+            break;
+        case 'ArrowUp':
+            if (nCords.y - 1 >= 0) {
+                nCords.y -= 1;
+            }
+            break;
+        case 'ArrowRight':
+            if (nCords.x + 1 <= 4) {
+                nCords.x += 1;
+            }
+            break;
+        case 'ArrowDown':
+            if (nCords.y + 1 <= 4) {
+                nCords.y += 1;
+            }
+    }
+    console.log(nCords);
+    if ((nCords != cCords) && !getCell(nCords.x, nCords.y).classList.contains("blocked")) {
+        getCell(nCords.x, nCords.y).appendChild(character);
+    }
+};
+
+labyrinth.addEventListener("keydown", (event) => {
+    event.preventDefault();
+    moveCharacter(event.key);
+});
