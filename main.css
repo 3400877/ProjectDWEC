@@ -36,6 +36,8 @@ button {
     --fg: white;
     --fg-inverse: rgb(0, 0, 0);
     --watched: hsl(150, 59%, 17%);
+    --start: hsl(244, 52%, 30%);
+    --end: hsl(41, 62%, 35%);
 }
 
 .watched {
@@ -251,4 +253,27 @@ article {
 .img {
     height: 643px;
     width: auto;
+}
+
+#labyrinth-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 100px);
+    grid-auto-rows: 100px;
+}
+
+.grid-cell {
+    background-color: var(--secondary);
+    border: 2px solid var(--border-color-dark);
+}
+
+.start-cell {
+    background-color: var(--start);
+}
+
+.end-cell {
+    background-color: var(--end);
+}
+
+.blocked {
+    filter: brightness(-50%);
 }
