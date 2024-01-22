@@ -12,20 +12,23 @@
 	<script src="moviebox.js" defer></script>
 	<script src='main.js' defer></script>
 	<script src="labyrinth.js" defer></script>
+	<script src="form.js" defer></script>
 </head>
 
 <body class="background-tint">
 	<nav>
-		<a id="add-popup"><strong>...</strong>
-			<div id="nav-popup" class="bordered shadow">
+		<a id="add-popup" class="popup"><strong>...</strong>
+			<div id="nav-popup" class="bordered shadow popup-content hidden">
+				<a id="login-form-button"><strong>Login</strong></a>
+				<a id="signup-form-button"><strong>Sign up</strong></a>
 				<a id="watch-movie-button"><strong>Mark Movie as watched</strong></a>
 				<a id="remove-movie-button"><strong>Remove movie</strong></a>
 			</div>
 		</a><strong>Moviedar - Movie Calendar</strong>
-		<a id="add-movie"><strong>Add Movie</strong></a>
+		<a id="add-movie" class="popup"><strong>Add Movie</strong></a>
 	</nav>
 
-	<div id="labyrinth-grid" class="popup" tabindex="0">
+	<div id="labyrinth-grid" class="popup-content" tabindex="0">
 		<div class="grid-cell blocked"></div>
 		<div class="grid-cell"></div>
 		<div class="grid-cell blocked"></div>
@@ -46,7 +49,7 @@
 		<div id="end-cell" class="grid-cell end-cell">End</div>
 	</div>
 
-	<div id="movie-form" class="framed popup shadow hidden">
+	<div id="movie-form" class="framed popup-content shadow hidden">
 		<form>
 			<label>Title:<br>
 				<input type="text" id="title">
@@ -69,7 +72,7 @@
 		</form>
 	</div>
 
-	<div id="remove-movie-form" class="framed popup shadow hidden">
+	<div id="remove-movie-form" class="framed popup-content shadow hidden">
 		<form>
 			<label>Title:<br>
 				<input type="text" id="rm-title">
@@ -78,12 +81,56 @@
 		</form>
 	</div>
 
-	<div id="watch-movie-form" class="framed popup shadow hidden">
+	<div id="watch-movie-form" class="framed popup-content shadow hidden">
 		<form>
 			<label>Title:<br>
 				<input type="text" id="watch-title">
 			</label>
 			<input type="submit" value="Submit">
+		</form>
+	</div>
+
+	<div id="div-login-form" class="popup-content shadow">
+		<form action="" class="form" id="login-form">
+			<!-- User -->
+			<div class="form-group" id="user-group">
+				<label for="user" class="form-label">User</label>
+				<div class="form-group-input">
+					<input type="text" class="form-input" name="user" id="user" placeholder="user">
+					<i class="form-validate-status"></i>
+				</div>
+				<p class="form-input-error">Username must be between 4 to 6 characters</p>
+			</div>
+
+			<!-- Name -->
+			<div class="form-group" id="user-group">
+				<label for="name" class="form-label">User</label>
+				<div class="form-group-input">
+					<input type="text" class="form-input" name="name" id="name" placeholder="John">
+					<i class="form-validate-status"></i>
+				</div>
+			</div>
+
+			<!-- Password -->
+			<div class="form-group" id="user-group">
+				<label for="password" class="form-label">User</label>
+				<div class="form-group-input">
+					<input type="password" class="form-input" name="password" id="password">
+					<i class="form-validate-status"></i>
+				</div>
+				<p class="form-input-error">Password must have at least 4 characters</p>
+			</div>
+
+			<!-- Password 2-->
+			<div class="form-group" id="user-group">
+				<label for="password2" class="form-label">User</label>
+				<div class="form-group-input">
+					<input type="password" class="form-input" name="password2" id="password2">
+					<i class="form-validate-status"></i>
+				</div>
+				<p class="form-input-error">Both passwords must be the same</p>
+			</div>
+
 		</form>
 	</div>
 
@@ -111,7 +158,7 @@
 			<div class="movies"></div>
 		</article>
 	</main>
-	<div id="movie-box" class="bordered popup hidden">
+	<div id="movie-box" class="bordered popup-content hidden">
 		Testing
 		<button id="btn-back" class="button">Back</button>
 		<button id="btn-forw" class="button">Forward</button>

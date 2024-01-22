@@ -1,3 +1,6 @@
+
+
+
 class MovieList {
 	constructor(calendar) {
 		this.movieList = [];
@@ -17,15 +20,15 @@ class MovieList {
 		if (index !== -1) {
 			this.movieList.splice(index, 1);
 		}
-	}
+	};
 
 	addMovie = (movie) => {
 		this.movieList.push(movie);
-	}
+	};
 
 	addMovieJSON = (movieJSON) => {
 		this.addMovies(JSON.parse(movieJSON).movies);
-	}
+	};
 
 	addMovies = (movies) => movies.forEach(this.addMovie);
 
@@ -87,14 +90,14 @@ class MovieList {
 
 				// Now, we append the movie div to the day div
 				dayDiv.append(movieDiv);
-			})
+			});
 
 			// Add the movie div to the article
 			movieListArticle.appendChild(dayDiv);
 		});
 
 		movieListHeader.parentNode.replaceChild(movieListArticle, movieListHeader.nextSibling);
-	}
+	};
 
 	bindEvents = () => {
 		addEventListener("dateUpdated", () => {
@@ -123,7 +126,7 @@ class MovieList {
 					day: date.getDate(),
 					director: director,
 					cast: cast
-				}
+				};
 
 				this.addMovie(movie);
 				this.addMovieListArticle();
@@ -143,7 +146,7 @@ class MovieList {
 			}
 			this.addMovieListArticle();
 			return false;
-		}
+		};
 
 		watchMovieForm.onsubmit = (event) => {
 			event.preventDefault();
@@ -154,10 +157,10 @@ class MovieList {
 			}
 			this.addMovieListArticle();
 			return false;
-		}
+		};
 
 
-	}
+	};
 }
 
 

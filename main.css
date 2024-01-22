@@ -189,7 +189,7 @@ article#calendar {
     filter: grayscale(0.4);
 }
 
-.popup {
+.popup-content {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -200,7 +200,6 @@ article#calendar {
 }
 
 #nav-popup {
-    display: none;
     flex-direction: column;
     position: absolute;
     z-index: 1;
@@ -221,7 +220,7 @@ article#calendar {
 }
 
 h1#h_movies {
-   font-weight: 800;
+    font-weight: 800;
 }
 
 article {

@@ -1,5 +1,3 @@
-const validateMovie = (title, director, date, cast) => title.length > 0 && director.length > 0 && (date ?? undefined) && cast.some(actor => actor.length > 0);
-
 const moviesJsonString = `
 {
     "movies": [
@@ -125,7 +123,7 @@ const moviesJsonString = `
     ]
 }
 
-`
+`;
 
 class Calendar {
 	constructor(month, year, day) {
@@ -147,7 +145,7 @@ class Calendar {
 		}
 		this.printCalendar();
 		dispatchEvent(new Event('dateUpdated'));
-	}
+	};
 
 	increaseDay = () => {
 		if (this.actualDay == this.daysInMonth()) {
@@ -157,7 +155,7 @@ class Calendar {
 			this.actualDay += 1;
 		}
 		this.updateDay();
-	}
+	};
 
 	reduceDay = () => {
 		if (this.actualDay == 1) {
@@ -167,7 +165,7 @@ class Calendar {
 			this.actualDay -= 1;
 		}
 		this.updateDay();
-	}
+	};
 
 	reduceMonth = () => {
 		if (this.month == 1) {
@@ -178,7 +176,7 @@ class Calendar {
 		}
 		this.printCalendar();
 		dispatchEvent(new Event('dateUpdated'));
-	}
+	};
 
 	reduceYear = () => this.year -= 1;
 
@@ -206,12 +204,12 @@ class Calendar {
 		}
 		calendar.replaceChildren(...calendarChildNodes);
 		this.printFullDay(actualDay);
-	}
+	};
 
 	setDay = (day) => {
 		this.actualDay = day;
 		this.updateDay();
-	}
+	};
 
 	// Updates the days class attributes
 	updateDay = () => {
@@ -224,7 +222,7 @@ class Calendar {
 			}
 		});
 		this.printFullDay(actualDay);
-	}
+	};
 
 	static appendDay = (day, actual) => {
 		const dayElement = document.createElement("time");
@@ -234,11 +232,11 @@ class Calendar {
 		}
 		dayElement.textContent = day;
 		return dayElement;
-	}
+	};
 
 	getDate = () => {
 		return new Date(this.year, this.month, this.actualDay);
-	}
+	};
 
 	bindControls = () => {
 		yesterday.addEventListener("click", this.reduceDay);
@@ -255,6 +253,6 @@ class Calendar {
 
 		[...days].forEach(index => index.addEventListener("mouseout", () => {
 			index.classList.remove("hovered");
-		}))
-	}
+		}));
+	};
 }
