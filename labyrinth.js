@@ -93,5 +93,3 @@ const validateMaze = () => {
     // Improve later
     labyrinth.remove();
 };
-
-validateMaze();

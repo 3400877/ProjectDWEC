@@ -1,5 +1,3 @@
-
-
 class Calendar {
 	constructor(month, year, day) {
 		this.month = month;
@@ -9,7 +7,7 @@ class Calendar {
 		this.bindControls();
 	}
 
-	increaseYear = () => this.year++;
+	increaseYear = () => this.year += 1;
 
 	increaseMonth = () => {
 		if (this.month == 12) {
