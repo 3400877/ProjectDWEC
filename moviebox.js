@@ -9,7 +9,7 @@ const movieBox = document.getElementById("movie-box");
 
 // Close the movie box when we click it
 
-movieBox.addEventListener("click", () => makeVisible(movieBox, false));
+movieBox.addEventListener("click", () => makeVisible(movieBox, -1));
 
 
 
@@ -21,7 +21,7 @@ const openMovie = (event) => {
 	activeMovie.appendChild(activeMovieImg);
 	makeVisible(movieBox);
 	movieBox.replaceChild(activeMovie, movieBox.firstChild);
-    indexMovie = [...documentMovieList].indexOf(event.currentTarget);
+	indexMovie = [...documentMovieList].indexOf(event.currentTarget);
 }
 
 

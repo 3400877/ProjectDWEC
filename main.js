@@ -5,20 +5,42 @@ const actualDay = document.getElementById("actual-day");
 const days = document.getElementsByClassName("day");
 const movieListHeader = document.getElementById("h_movies");
 // Navigation bar stuff
-const movieForm = document.getElementById("movie-form");
 const navPopup = document.getElementById("nav-popup");
-const removeMovieButton = document.getElementById("remove-movie-button");
-const watchMovieButton = document.getElementById("watch-movie-button");
-const removeMovieForm = document.getElementById("remove-movie-form");
-const watchMovieForm = document.getElementById("watch-movie-form");
 
 // Popups
-const popups = document.getElementsByClassName('popup');
+// - Login form -
+const addLoginForm = document.getElementById("login-form-button");
+const loginForm = document.getElementById("div-login-form");
+addLoginForm.addEventListener('click', (e) => makeVisible(loginForm));
+// - Movie form -
+const addMovieForm = document.getElementById("add-movie");
+const movieForm = document.getElementById("movie-form");
+addMovieForm.addEventListener('click', (e) => makeVisible(movieForm));
+// - Movie watched form
+const addMovieWatchedForm = document.getElementById("watch-movie-button");
+const movieWatchedForm = document.getElementById("watch-movie-form");
+addMovieWatchedForm.addEventListener('click', (e) => makeVisible(movieWatchedForm));
+// - Remove movie form -
+const addRemoveMovieForm = document.getElementById("remove-movie-button");
+const removeMovieForm = document.getElementById("remove-movie-form");
+addRemoveMovieForm.addEventListener('click', (e) => makeVisible(removeMovieForm));
+// - Hamburger menu -
+const hamburgerMenuButton = document.getElementById("hamb-menu-button");
+const hamburgerMenuContent = document.getElementById("hamb-menu");
+hamburgerMenuButton.addEventListener('click', (e) => makeVisible(hamburgerMenuContent));
+// - List of forms and menus -
+const menusList = [loginForm, movieForm, movieWatchedForm, removeMovieForm, hamburgerMenuContent];
 
-// Add event listener to popups
-[...popups].forEach((popup) => {
-	popup.addEventListener('click', (e) => makeVisible(e.target.firstChild));
+document.addEventListener("keydown", (e) => {
+	if (e.key == 'Escape') {
+		menusList.forEach(menu => makeVisible(menu, -1));
+	}
 });
+
+// // Add event listener to popups
+// [...popups].forEach((popup) => {
+// 	popup.addEventListener('click', (e) => makeVisible(e.target.firstChild))
+// })
 
 const monthText = [
 	'January', 'February', 'March', 'April',
@@ -26,18 +48,20 @@ const monthText = [
 	'September', 'October', 'November', 'December'
 ];
 
-const makeVisible = (element, bool = -1) => {
-	if (bool == -1) {
-		if (!element.classList.contains("hidden")) {
+const makeVisible = (element, bool = 0) => {
+	switch (bool) {
+		case -1:
 			element.classList.add("hidden");
-		} else {
+			break;
+		case 0:
+			if (!element.classList.contains("hidden")) {
+				element.classList.add("hidden");
+			} else {
+				element.classList.remove("hidden");
+			}
+			break;
+		case 1:
 			element.classList.remove("hidden");
-		}
-	}
-	else if (bool) {
-		element.classList.remove("hidden");
-	} else {
-		element.classList.add("hidden");
 	}
 };
 
@@ -55,24 +79,9 @@ const actualDate = new Date();
 const calendar1 = new Calendar(actualDate.getMonth() + 1, actualDate.getFullYear(), actualDate.getDate());
 const movieList1 = new MovieList(calendar1);
 movieList1.addMovieJSON(moviesJsonString);
+movieList1.addMovieJSON(moviesJsonString2);
+
 movieList1.addMovieListArticle();
-
-removeMovieButton.onclick = () => makeVisible(removeMovieForm);
-watchMovieButton.onclick = () => makeVisible(watchMovieForm);
-
-document.body.addEventListener("keydown", (event) => {
-	if (event.code === "KeyM") {
-		alert("You pressed the letter 'm'");
-	};
-});
-
-document.body.addEventListener("keydown", (event) => {
-	if (event.code === "Escape") {
-		makeVisible(movieForm, false);
-		makeVisible(navPopup, false);
-		makeVisible(movieBox, false);
-	}
-});
 
 const buttons = Object.values(document.getElementsByTagName("button")).concat(Object.values(document.getElementsByClassName("button")));
 

@@ -1,4 +1,5 @@
-
+const apiKey = 'f52bd55a'; // My API key
+const apiUrl = 'https://www.omdbapi.com/?s=';
 
 
 class MovieList {
@@ -8,6 +9,8 @@ class MovieList {
 		this.printDate();
 		this.bindEvents();
 	}
+
+	addMoviesFrom;
 
 	// Mark a movie as watched
 	watchMovie = (movie) => {
@@ -52,7 +55,7 @@ class MovieList {
 
 			// Add the date to the div
 			const dayTitle = document.createElement('h2');
-			dayTitle.classList.add("header", "bordered");
+			dayTitle.classList.add("header");
 			dayTitle.textContent = `${this.calendar.month}/${day}/${this.calendar.year}`;
 			dayDiv.appendChild(dayTitle);
 
@@ -148,7 +151,7 @@ class MovieList {
 			return false;
 		};
 
-		watchMovieForm.onsubmit = (event) => {
+		movieWatchedForm.onsubmit = (event) => {
 			event.preventDefault();
 			const title = document.getElementById('watch-title').value;
 			const movie = this.movieList.find(movie => movie.title === title);

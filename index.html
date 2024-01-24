@@ -4,9 +4,10 @@
 <head>
 	<meta charset='utf-8'>
 	<meta http-equiv='X-UA-Compatible' content='IE=edge'>
-	<title>Moviedar - Movie Calendar</title>
+	<title>Moviedar - Cinema Calendar</title>
 	<meta name='viewport' content='width=device-width, initial-scale=1'>
 	<link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+	<script src="movies.js" defer></script>
 	<script src="calendar.js" defer></script>
 	<script src="movielist.js" defer></script>
 	<script src="moviebox.js" defer></script>
@@ -17,18 +18,15 @@
 
 <body class="background-tint">
 	<nav>
-		<a id="add-popup" class="popup"><strong>...</strong>
-			<div id="nav-popup" class="bordered shadow popup-content hidden">
-				<a id="login-form-button"><strong>Login</strong></a>
-				<a id="signup-form-button"><strong>Sign up</strong></a>
-				<a id="watch-movie-button"><strong>Mark Movie as watched</strong></a>
-				<a id="remove-movie-button"><strong>Remove movie</strong></a>
-			</div>
-		</a><strong>Moviedar - Movie Calendar</strong>
-		<a id="add-movie" class="popup"><strong>Add Movie</strong></a>
+		<a href="/"><strong id="moviedar">MOVIEDAR</strong></a>
+		<div id="div-logup">
+			<a id="login-form-button"><strong>Login</strong></a>
+			<a id="signup-form-button" class="framed"><strong>Sign up</strong></a>
+			<a id="hamb-menu-button">☰</a>
+		</div>
 	</nav>
 
-	<div id="labyrinth-grid" class="popup-content" tabindex="0">
+	<div id="labyrinth-grid" class="popup-content framed" tabindex="0">
 		<div class="grid-cell blocked"></div>
 		<div class="grid-cell"></div>
 		<div class="grid-cell blocked"></div>
@@ -50,6 +48,7 @@
 	</div>
 
 	<div id="movie-form" class="framed popup-content shadow hidden">
+		<h1>Add movie</h1>
 		<form>
 			<label>Title:<br>
 				<input type="text" id="title">
@@ -72,7 +71,9 @@
 		</form>
 	</div>
 
+
 	<div id="remove-movie-form" class="framed popup-content shadow hidden">
+		<h1>Remove movie</h1>
 		<form>
 			<label>Title:<br>
 				<input type="text" id="rm-title">
@@ -82,6 +83,7 @@
 	</div>
 
 	<div id="watch-movie-form" class="framed popup-content shadow hidden">
+		<h1>Mark movie as watched</h1>
 		<form>
 			<label>Title:<br>
 				<input type="text" id="watch-title">
@@ -90,7 +92,7 @@
 		</form>
 	</div>
 
-	<div id="div-login-form" class="popup-content shadow">
+	<div id="div-login-form" class="popup-content shadow framed hidden">
 		<form action="" class="form" id="login-form">
 			<!-- User -->
 			<div class="form-group" id="user-group">
@@ -99,12 +101,12 @@
 					<input type="text" class="form-input" name="user" id="user" placeholder="user">
 					<i class="form-validate-status"></i>
 				</div>
-				<p class="form-input-error">Username must be between 4 to 6 characters</p>
+				<p class="form-input-error hidden">Username must be between 4 to 6 characters</p>
 			</div>
 
 			<!-- Name -->
 			<div class="form-group" id="user-group">
-				<label for="name" class="form-label">User</label>
+				<label for="name" class="form-label">Name</label>
 				<div class="form-group-input">
 					<input type="text" class="form-input" name="name" id="name" placeholder="John">
 					<i class="form-validate-status"></i>
@@ -113,22 +115,22 @@
 
 			<!-- Password -->
 			<div class="form-group" id="user-group">
-				<label for="password" class="form-label">User</label>
+				<label for="password" class="form-label">Password</label>
 				<div class="form-group-input">
 					<input type="password" class="form-input" name="password" id="password">
 					<i class="form-validate-status"></i>
 				</div>
-				<p class="form-input-error">Password must have at least 4 characters</p>
+				<p class="form-input-error hidden">Password must have at least 4 characters</p>
 			</div>
 
 			<!-- Password 2-->
 			<div class="form-group" id="user-group">
-				<label for="password2" class="form-label">User</label>
+				<label for="password2" class="form-label">Confirm Password</label>
 				<div class="form-group-input">
 					<input type="password" class="form-input" name="password2" id="password2">
 					<i class="form-validate-status"></i>
 				</div>
-				<p class="form-input-error">Both passwords must be the same</p>
+				<p class="form-input-error hidden">Both passwords must be the same</p>
 			</div>
 
 		</form>
@@ -153,8 +155,8 @@
 			<div class="days">
 			</div>
 		</article>
-		<article class="bordered">
-			<h1 id="h_movies" class="header bordered"></h1>
+		<article id="movie-info" class="bordered">
+			<h1 id="h_movies" class="header"></h1>
 			<div class="movies"></div>
 		</article>
 	</main>
@@ -162,6 +164,13 @@
 		Testing
 		<button id="btn-back" class="button">Back</button>
 		<button id="btn-forw" class="button">Forward</button>
+	</div>
+	<div id="hamb-menu" class="hidden">
+		<div id="hamb-menu-content" class="bordered">
+			<a id="add-movie" class="popup"><strong>Add Movie</strong></a>
+			<a id="watch-movie-button"><strong>Mark Movie as watched</strong></a>
+			<a id="remove-movie-button"><strong>Remove movie</strong></a>
+		</div>
 	</div>
 </body>
 

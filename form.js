@@ -1,4 +1,3 @@
-const loginForm = document.getElementById('login-form');
 const inputs = loginForm.getElementsByTagName('input');
 
 const validateMovie = (title, director, date, cast) => title.length > 0 && director.length > 0 && (date ?? undefined) && cast.some(actor => actor.length > 0);

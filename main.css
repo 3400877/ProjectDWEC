@@ -3,6 +3,17 @@
     src: url(assets/GeistVariableVF.woff2);
 }
 
+@font-face {
+    font-family: Afacad;
+    src: url(assets/Afacad-VariableFont_wght.ttf);
+}
+
+@font-face {
+    font-family: Afacad;
+    src: url(assets/Afacad-Italic-VariableFont_wght.ttf);
+    font-style: italic;
+}
+
 
 * {
     box-sizing: border-box;
@@ -10,6 +21,13 @@
     margin: 0;
     font-family: Geist, sans-serif;
     font-weight: 400;
+}
+
+#moviedar {
+    font-family: Afacad;
+    font-weight: 1000;
+    font-size: 25px;
+    letter-spacing: 5px;
 }
 
 /* We reset button styling */
@@ -26,13 +44,15 @@ button {
 
 :root {
     --border-color-dark: hsla(0, 0%, 0%, 0.33);
-    --border-color-light: hsla(0, 0%, 100%, 0.16);
+    --border-color-light: hsla(0, 0%, 100%, 0.233);
     --border: 2px solid var(--border-color-dark);
     --border-light: 2px solid var(--border-color-light);
+    --border-primary: 2px solid var(--primary);
     --bg: hsl(0, 0%, 10%);
-    --primary: hsl(190, 61%, 45%);
-    --secondary: hsl(190, 51%, 30%);
-    --secondary-transparent: hsla(190, 32%, 13%, 0.67);
+    --bg2: hsl(0, 0%, 20%);
+    --primary: hsl(219, 61%, 45%);
+    --secondary: hsl(219, 51%, 30%);
+    --transparent: hsla(0, 0%, 0%, 0.575);
     --fg: white;
     --fg-inverse: rgb(0, 0, 0);
     --watched: hsl(150, 59%, 17%);
@@ -58,8 +78,8 @@ time#actual-day {
 }
 
 #calendar {
-    --primary: hsl(32, 71%, 56%);
-    --secondary: hsl(212, 76%, 50%);
+    --primary: hsl(330, 62%, 58%);
+    --secondary: hsl(216, 83%, 36%);
 }
 
 body {
@@ -78,10 +98,13 @@ body {
     border-left: var(--border-light);
     border-bottom: var(--border);
     border-right: var(--border);
+    border-radius: 20px;
 }
 
 .bordered {
     border: var(--border-light);
+    border-color: rgba(255, 255, 255, 0.096);
+    border-radius: 20px;
 }
 
 .title {
@@ -99,12 +122,13 @@ li::marker {
 
 nav {
     margin-top: 0;
-    background-color: var(--bg);
-    border-bottom: var(--border-light);
+    background-color: var(--transparent);
+    backdrop-filter: blur(10px);
     margin-bottom: 50px;
     display: flex;
     justify-content: space-between;
     padding: 10px;
+    align-items: center;
 }
 
 nav a {
@@ -130,7 +154,8 @@ main {
     margin-right: auto;
     min-height: 100vh;
     width: 100vw;
-    background-color: var(--secondary-transparent);
+    background-color: var(--transparent);
+    backdrop-filter: blur(5px);
     overflow: hi;
     margin-bottom: 10px;
 }
@@ -140,6 +165,7 @@ article#calendar {
     padding: 0;
     background-color: var(--bg);
     float: left;
+    overflow: hidden;
 }
 
 .weekdays {
@@ -161,9 +187,12 @@ article#calendar {
 .days {
     display: grid;
     text-align: center;
-    grid-template-columns: repeat(7, 100px);
-    grid-auto-rows: 50px;
+    grid-template-columns: repeat(7, 60px);
+    column-gap: 10px;
+    row-gap: 10px;
+    grid-auto-rows: 60px;
     overflow: hidden;
+    padding: 0 20px 20px 20px;
 }
 
 .shadow {
@@ -186,17 +215,21 @@ article#calendar {
 }
 
 #calendar time:empty {
-    filter: grayscale(0.4);
+    filter: brightness(0.8) grayscale(0.4);
 }
 
 .popup-content {
     position: fixed;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: var(--bg);
     z-index: 2;
     padding: 20px;
+    min-width: 80vw;
 }
 
 #nav-popup {
@@ -213,9 +246,10 @@ article#calendar {
 }
 
 .header {
-    margin: 10px;
+    margin: 0px;
+    padding: 10px;
     text-align: center;
-    background-color: var(--bg);
+    background-color: none;
     font-weight: 600;
 }
 
@@ -286,4 +320,119 @@ article {
     font-size: 50px;
     font-weight: bold;
     color: white;
+}
+
+input {
+    background-color: unset;
+    border: unset;
+    padding: 0 10px;
+    margin: 0;
+    font-size: unset;
+    color: unset;
+    outline: none;
+    width: 100%;
+    background-color: var(--bg2);
+    border-radius: 20px;
+    height: 45px;
+    transition: all .3s ease;
+    border-width: 2px;
+    border-style: solid;
+    border-color: transparent;
+    margin: 10px 0;
+}
+
+input:focus {
+    border: unset;
+    outline: unset;
+    border-width: 2px;
+    border-style: solid;
+    background-color: var(--bg);
+    border-color: var(--primary);
+}
+
+input:hover {
+    background-color: var(--bg);
+    border-color: var(--primary);
+}
+
+#login-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.form-label {
+    display: flex;
+    font-weight: 700;
+    width: 100px;
+    align-self: center;
+    justify-content: center;
+    padding: 0 30px;
+}
+
+.form-group-input {
+    position: relative;
+}
+
+.form-group {
+    display: flex;
+}
+
+#signup-form-button {
+    background-color: var(--primary);
+    border-radius: 15px;
+    padding: 9px;
+}
+
+#signup-form-button strong {
+    font-family: Afacad;
+}
+
+#login-form-button strong {
+    font-family: Afacad;
+}
+
+
+#div-logup {
+    display: flex;
+    justify-content: space-around;
+    gap: 15px;
+    align-items: center;
+}
+
+#hamb-menu-button {
+    font-weight: 900;
+    font-size: 24px;
+    user-select: none;
+    margin-right: 10px;
+}
+
+#hamb-menu-content {
+    display: flex;
+    font-size: 16px;
+    flex-direction: column;
+    position: absolute;
+    right: 10px;
+    width: 400px;
+    top: 75px;
+    background-color: var(--transparent);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    z-index: 9999;
+    row-gap: 15px;
+
+}
+
+#movie-info {
+    background-color: var(--transparent);
+    backdrop-filter: blur(5px);
+}
+
+#h_movies {
+    font-family: Afacad;
+    font-size: 30px;
+}
+
+a {
+    cursor: pointer;
 }
