@@ -48,8 +48,8 @@ button {
     --border: 2px solid var(--border-color-dark);
     --border-light: 2px solid var(--border-color-light);
     --border-primary: 2px solid var(--primary);
-    --bg: hsl(0, 0%, 10%);
-    --bg2: hsl(0, 0%, 20%);
+    --bg: hsl(0, 0%, 5%);
+    --bg2: hsl(0, 0%, 10%);
     --primary: hsl(219, 61%, 45%);
     --secondary: hsl(219, 51%, 30%);
     --transparent: hsla(0, 0%, 0%, 0.575);
@@ -65,7 +65,7 @@ button {
 }
 
 .button {
-    margin: 10px;
+    margin: 20px;
     padding: 5px;
     background-color: var(--bg);
     color: var(--fg);
@@ -74,7 +74,7 @@ button {
 
 time#actual-day {
     display: inline-block;
-    width: 250px;
+    width: 100%;
 }
 
 #calendar {
@@ -123,11 +123,11 @@ li::marker {
 nav {
     margin-top: 0;
     background-color: var(--transparent);
-    backdrop-filter: blur(10px);
+    /* backdrop-filter: blur(10px); */
     margin-bottom: 50px;
     display: flex;
-    justify-content: space-between;
     padding: 10px;
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -155,7 +155,7 @@ main {
     min-height: 100vh;
     width: 100vw;
     background-color: var(--transparent);
-    backdrop-filter: blur(5px);
+    /* backdrop-filter: blur(5px); */
     overflow: hi;
     margin-bottom: 10px;
 }
@@ -164,36 +164,39 @@ article#calendar {
     margin: 0;
     padding: 0;
     background-color: var(--bg);
-    float: left;
+    width: 90%;
+    height: max-content;
     overflow: hidden;
 }
 
 .weekdays {
-    display: flex;
-    justify-content: space-around;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    padding: 3% 3% 0 3%;
     background-color: var(--bg);
     margin: 0;
 }
 
 .weekdays abbr {
-    display: flex;
-    height: 50px;
+    margin: 0;
+    padding: 0;
     font-weight: 700;
-    align-items: center;
-    justify-content: center;
+    text-align: center;
     text-decoration: none;
 }
 
 .days {
     display: grid;
     text-align: center;
-    grid-template-columns: repeat(7, 60px);
-    column-gap: 10px;
-    row-gap: 10px;
+    grid-template-columns: repeat(7, 1fr);
+    column-gap: 1.5%;
+    row-gap: 1.5%;
     grid-auto-rows: 60px;
-    overflow: hidden;
-    padding: 0 20px 20px 20px;
+    padding: 3%;
+    margin-bottom: 10px;
 }
+
+
 
 .shadow {
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2), 10px 10px 5px rgba(0, 0, 0, 0.2), 15px 15px 5px rgba(0, 0, 0, 0.3);
@@ -231,7 +234,6 @@ article#calendar {
     background-color: var(--bg);
     z-index: 2;
     padding: 20px;
-    min-width: 80vw;
 }
 
 #nav-popup {
@@ -274,8 +276,7 @@ article {
 }
 
 .movies {
-    width: 80%;
-    max-width: 80vw;
+    width: 100%;
 }
 
 time,
@@ -428,8 +429,8 @@ input:hover {
     right: 10px;
     width: 400px;
     top: 75px;
-    background-color: var(--transparent);
-    backdrop-filter: blur(10px);
+    background-color: var(--bg);
+    /* backdrop-filter: blur(10px); */
     padding: 20px;
     z-index: 9999;
     row-gap: 15px;
@@ -438,7 +439,10 @@ input:hover {
 
 #movie-info {
     background-color: var(--transparent);
-    backdrop-filter: blur(5px);
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    /* backdrop-filter: blur(5px); */
 }
 
 #h_movies {
@@ -474,8 +478,4 @@ input[type="submit"].cancel {
 input[type="submit"].cancel:hover {
     border-color: hsl(0, 100%, 66%);
     background-color: hsl(0, 67%, 28%);
-}
-
-div.movie {
-    width: auto;
 }
