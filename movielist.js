@@ -1,6 +1,12 @@
 const apiKey = 'f52bd55a'; // My API key
 const apiUrl = 'https://www.omdbapi.com/?s=';
 
+const movieListHeader = document.getElementById("h_movies");
+
+const movieForm = document.getElementById("movie-form");
+
+import * as popups from "./popups.js";
+import * as gb from "./group-by.js";
 
 class MovieList {
 	constructor(calendar) {
@@ -46,7 +52,8 @@ class MovieList {
 		const filteredMovieList = this.movieList.filter(movie => movie.month == this.calendar.month);
 
 		// And we group those movies by the day
-		const groupedMovieList = Object.groupBy(filteredMovieList, ({ day }) => day);
+		const groupedMovieList = gb.groupBy(filteredMovieList);
+		//const groupedMovieList = Object.groupBy(filteredMovieList, ({ day }) => day);
 
 		Object.entries(groupedMovieList).forEach(([day, movies]) => {
 
@@ -140,7 +147,7 @@ class MovieList {
 			return false;
 		});
 
-		removeMovieForm.onsubmit = (event) => {
+		popups.removeMovieForm.onsubmit = (event) => {
 			event.preventDefault();
 			const title = document.getElementById('rm-title').value;
 			const movie = this.movieList.find(movie => movie.title === title);
@@ -151,7 +158,7 @@ class MovieList {
 			return false;
 		};
 
-		movieWatchedForm.onsubmit = (event) => {
+		popups.movieWatchedForm.onsubmit = (event) => {
 			event.preventDefault();
 			const title = document.getElementById('watch-title').value;
 			const movie = this.movieList.find(movie => movie.title === title);
@@ -166,4 +173,5 @@ class MovieList {
 	};
 }
 
+export { MovieList };
 

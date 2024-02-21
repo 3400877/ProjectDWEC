@@ -7,6 +7,7 @@ const buttonForward = document.getElementById("btn-forw");
 
 const movieBox = document.getElementById("movie-box");
 
+
 // Close the movie box when we click it
 
 movieBox.addEventListener("click", () => makeVisible(movieBox, -1));

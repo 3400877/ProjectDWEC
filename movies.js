@@ -126,7 +126,7 @@ const moviesJsonString = `
 `;
 
 const moviesJsonString2 =
-  `
+    `
   {
     "movies": [
         {
@@ -203,3 +203,5 @@ const moviesJsonString2 =
 }
 
 `;
+
+export { moviesJsonString, moviesJsonString2 };

@@ -1,9 +1,8 @@
-const calendar = document.getElementsByClassName("days").item(0);
 const yesterday = document.getElementById("yesterday");
 const tomorrow = document.getElementById("tomorrow");
 const actualDay = document.getElementById("actual-day");
-const days = document.getElementsByClassName("day");
-const movieListHeader = document.getElementById("h_movies");
+
+
 // Navigation bar stuff
 const navPopup = document.getElementById("nav-popup");
 
@@ -42,12 +41,6 @@ document.addEventListener("keydown", (e) => {
 // 	popup.addEventListener('click', (e) => makeVisible(e.target.firstChild))
 // })
 
-const monthText = [
-	'January', 'February', 'March', 'April',
-	'May', 'June', 'July', 'August',
-	'September', 'October', 'November', 'December'
-];
-
 const makeVisible = (element, bool = 0) => {
 	switch (bool) {
 		case -1:
@@ -76,8 +69,13 @@ const actualDate = new Date();
 // 		.catch(error => console.error('There was an error. The error was: ', error));
 // }
 
+import { Calendar } from "./calendar.js";
+import { MovieList } from "./movielist.js";
+
 const calendar1 = new Calendar(actualDate.getMonth() + 1, actualDate.getFullYear(), actualDate.getDate());
 const movieList1 = new MovieList(calendar1);
+
+import { moviesJsonString, moviesJsonString2 } from "./movies.js";
 movieList1.addMovieJSON(moviesJsonString);
 movieList1.addMovieJSON(moviesJsonString2);
 
