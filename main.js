@@ -11,6 +11,10 @@ const navPopup = document.getElementById("nav-popup");
 const addLoginForm = document.getElementById("login-form-button");
 const loginForm = document.getElementById("div-login-form");
 addLoginForm.addEventListener('click', (e) => makeVisible(loginForm));
+// - Signup form -
+const addSignupForm = document.getElementById("signup-form-button");
+addSignupForm.addEventListener('mouseover', (e) => addSignupForm.classList.add("hovered"));
+addSignupForm.addEventListener('mouseout', (e) => addSignupForm.classList.remove("hovered"));
 // - Movie form -
 const addMovieForm = document.getElementById("add-movie");
 const movieForm = document.getElementById("movie-form");
@@ -81,14 +85,14 @@ movieList1.addMovieJSON(moviesJsonString2);
 
 movieList1.addMovieListArticle();
 
-const buttons = Object.values(document.getElementsByTagName("button")).concat(Object.values(document.getElementsByClassName("button")));
+// const buttons = Object.values(document.getElementsByTagName("button")).concat(Object.values(document.getElementsByClassName("button")));
 
-buttons.forEach(button => {
-	button.addEventListener("mouseover", () => {
-		button.classList.add("hovered");
-	});
-});
+// buttons.forEach(button => {
+// 	button.addEventListener("mouseover", () => {
+// 		button.classList.add("hovered");
+// 	});
+// });
 
-buttons.forEach(button => button.addEventListener("mouseout", () => {
-	button.classList.remove("hovered");
-}));
+// buttons.forEach(button => button.addEventListener("mouseout", () => {
+// 	button.classList.remove("hovered");
+// }));

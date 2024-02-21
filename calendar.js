@@ -1,14 +1,3 @@
-const actualDay = document.getElementById("actual-day");
-const calendar = document.getElementsByClassName("days").item(0);
-
-const monthText = [
-	'January', 'February', 'March', 'April',
-	'May', 'June', 'July', 'August',
-	'September', 'October', 'November', 'December'
-];
-
-const days = document.getElementsByClassName("day");
-
 class Calendar {
 	constructor(month, year, day) {
 		this.month = month;
@@ -18,7 +7,7 @@ class Calendar {
 		this.bindControls();
 	}
 
-	increaseYear = () => this.year++;
+	increaseYear = () => this.year += 1;
 
 	increaseMonth = () => {
 		if (this.month == 12) {
